@@ -33,4 +33,27 @@
 >> [!NOTE]
 > in the top frame (top of stack memory) there `sp/rsp` register inside the CPU that holds the address of the top of the stack 
 
+>> [!NOTE]
+> All stack frames currently on the stack correspond to function calls that have not finished executing.
+
+> [!WARNING]
+> It is catastrophic to return a pointer into the stack!
+
+```c
+char *make_buf(size_t len) {
+    char buf[len];
+    return buf;
+}
+void foo(char *ptr2, size_t len) { ... }
+int main(){
+   char *ptr = make_buf(BUFLEN); 
+   foo(ptr, BUFLEN);
+   ...
+}
+```
+
+![result](https://notes.cs61c.org/build/c-stack-buf-bad-4c6ca25a021256f54d683cec6c61e55b.png) 
+
+> from course
+> The stack pointer itself must live somewhere. Instead of living in memory, it lives on the CPU in a special hardware register, so that it can be read and updated quickly
 
