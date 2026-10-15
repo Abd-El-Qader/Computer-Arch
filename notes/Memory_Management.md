@@ -9,11 +9,11 @@
 
 ---
 ### Stack
->> > [!IMPORTANT]
+> [!IMPORTANT]
 > (same exact footnote as in an earlier section) Because parameters and return addresses are critical to function call and return, they are stored directly in the CPU where possible–on special hardware called registers (which we talk about later). Because there are only a limited number of such registers, additional parameters and return addresses are stored in memory on the stack until they are needed.
 
 
->> [!IMPORTANT]
+> [!IMPORTANT]
 > Allocation and deallocation is incredibly fast on the stack thanks to the stack pointer.
 > stack pointer is an internally tracked value
 > that tells us the address of the “top of the stack”
