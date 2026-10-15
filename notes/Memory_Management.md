@@ -30,10 +30,10 @@
 [import link that explain the relation between function parameters and return address, and explain also what is return address(claude)](https://claude.ai/share/74769333-a757-4300-a1c2-7a8fc274f2bc) 
 [deepseek](https://chat.deepseek.com/share/gkthr3wuxreuf0j1he)
 
->> [!NOTE]
+> [!NOTE]
 > in the top frame (top of stack memory) there `sp/rsp` register inside the CPU that holds the address of the top of the stack 
 
->> [!NOTE]
+> [!NOTE]
 > All stack frames currently on the stack correspond to function calls that have not finished executing.
 
 > [!WARNING]
