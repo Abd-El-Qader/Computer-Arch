@@ -56,4 +56,57 @@ int main(){
 
 > from course
 > The stack pointer itself must live somewhere. Instead of living in memory, it lives on the CPU in a special hardware register, so that it can be read and updated quickly
+---
+### Heap
+
+> In C, we need to manually free space on the heap;
+
+>Java has a background garbage collector which frees dynamically allocated objects when they are unused
+
+> [!NOTE]
+> Memory on the heap is managed with the help of standard C library functions in `stdlib.h`
+  - `malloc`: memory allocation, i.e., allocate a memory block on the heap
+  - `free`: free memory on the heap
+  - `realloc`: reallocate previously allocated memory blocks to a larger or smaller memory block on the heap.
+
+> [!NOTE]
+> Dynamic memory (that is, storage in the heap) can be allocated (malloc-ed), resized (realloc-ed), and deallocated (free-d) during program runtime
+
+> [!IMPORTANT]
+> contrast this with the stack, where each local variable size must be determined first in order to determine the size of each stack frame.
+
+
+> [!NOTE]
+> The stack is a relatively small pool of memory, and memory blocks are allocated as stack frames, which are adjacent to one another.
+> By contrast, the heap is typically huge–much larger than the stack—and memory blocks are not necessarily allocated in contiguous order.
+
+> three requests in heap memory 
+![img](https://notes.cs61c.org/build/c-heap-d130519f96f5c27bc0c921f3ae2d7643.png) 
+
+> [!NOTE]
+> back-to-back heap memory requests can result in blocks that are quite far apart.
+
+#### `void *malloc(size_t n)`
+- Parameter size_t n: An unsigned integer type big enough to “count” memory bytes.
+- Return: void * pointer, i.e., a pointer to generic space 
+- A return value NULL indicates there is no more memory available on the heap.
+
+#### ` void free(void *ptr)`
+
+
+#### `void *realloc(void *ptr, size_t size)`
+- `realloc` is a function that resizes a previously allocated block at ptr to a new size. In doing so, it may need to copy all data to a new location.
+- Parameter `void *ptr`: A pointer containing an address originally returned by `malloc/realloc`, OR the value `NULL`.
+- Parameter size_t size: An unsigned integer type big enough to “count” memory bytes.
+- Return: like `malloc`
+
+#### ` void *calloc(size_t nelem, size_t elsize)1`;
+- it initializes all bits in the allocated block to zero
+- so it is ***Recommended*** rather than `malloc` 
+`nelem`: The number of elements to allocate. 
+`elsize`: The element size in bytes. 
+`void *`: Returns a generic pointer to the lowest byte address of the allocated space. If the allocation fails, it returns NULL
+
+> [!IMPORTANT]
+>  to catch memory management errors, use tools like [Valgrind](https://valgrind.org/) 
 
